@@ -1,0 +1,85 @@
+\section{Introduction}
+\section{Pengantar}\label{sec:introduction}
+
+\subsection{Motivation}
+\subsection{Motivasi}
+    \label{sec:intro_motivation}
+Model dunia, yang bertujuan untuk mensimulasikan dunia nyata, telah lama menantang signifikan dalam kecerdasan buatan, memengaruhi berbagai aplikasi, seperti robotika, mengemudi otonom, dan permainan. 
+    %
+    Meskipun kemampuan spesifik yang diperlukan untuk model dunia banyak dan belum didefinisikan dengan tepat, pendekatan seperti generasi 3D~\cite{lumagenie2025, liu2025unleashing, huang2024placiddreamer}, generasi adegan 3D/4D, dan generasi video menunjukkan satu atau lebih kemampuan relevan, seperti dinamika gerak, interaksi dan kendali, kualitas visual, konsistensi 3D, dan efisiensi generasi. Akibatnya, pendekatan ini telah diadopsi dalam karya-karya terkini sebagai potensi menuju mewujudkan model dunia.
+
+    Meskipun pendekatan ini masing-masing unggul dalam kemampuan parsial menuju pemodelan dunia, generasi video menawarkan satu jalur langsung dan komprehensif, yang dapat menjadi aljanar yang menjanjikan untuk membangun model dunia.
+    Dari perspektif ilmu kognitif, penglihatan adalah modality sensorik yang dominan melalui mana manusia dan agen berbadan merasakan, belajar, dan bernalar tentang dunia. Aliran visual tidak hanya menyampaikan tata letak spasial dan properti objek tetapi juga mengkodekan dinamika temporal dan hubungan kausal yang penting untuk prediksi dan perencanaan. Bahkan simulasi 3D atau 4D yang kompleks dapat dirender menjadi video atau gambar untuk interpretasi, artinya setiap manusia atau agen berbadan menempatkan pemahamannya dalam urutan visual. Ketergantungan intrinsik pada representasi visual ini membuat generasi video sebagai fondasi yang secara alami unik dan kaya informasi untuk membangun model dunia.
+
+     Kemajuan terkini dalam generasi video end-to-end menunjukkan bahwa model-model tersebut sekarang dapat berfungsi sebagai renderer visual berkualitas tinggi, memungkinkan eksplorasi pendekatan berbasis video untuk pemodelan dunia. Kemajuan terkini dalam teknik, seperti model difusi~\cite{peebles2023dit, podell2023sdxl, esser2024sd3, song2020denoising} dan transformer autoregresif~\cite{parmar2018imagegeneration, ramesh2021zeroshott2i, razavi2019vqvae2}, telah memungkinkan generasi video berkualitas tinggi yang berlandaskan pengetahuan dunia fundamental.
+    Metode saat ini~\cite{sora, teng2025magi, wan2025wan, peng2025opensora2, kong2024hunyuanvideo, xu2024easyanimate, bao2024vidu, yin2025causvid, polyak2024moviegen, huang2025selfforcing, klingai2024kling, yang2024cogvideox, lin2025apt2, agarwal2025cosmos, chen2025skyreels, gao2025seedance, mirage2025} yang berbasis tulang punggung ini sekarang mampu menghasilkan video durasi panjang, berkualitas tinggi dengan kepatuhan permukaan, memberinya kemampuan untuk mensimulasikan lingkungan dunia nyata dengan fidelitas tinggi dan mengintegrasikan kondisi multi-modal. Akibatnya, ada tren yang semakin jelas dalam memanfaatkan model generasi video sebagai model dunia.
+
+    \begin{figure}[!t]
+      \centering
+      \includegraphics[width=\linewidth]{figures/future_c.pdf}
+      \caption{\textbf{Tinjauan 4 Generasi dan 3 Kemampuan Inti dari Generasi Video ke Model Dunia.} Gambar ini menggambarkan kemampuan kunci yang ditekankan pada generasi pertama hingga ketiga model dunia, serta wawasan kami untuk model dunia di masa depan. Kami menggambarkan visi jangka panjang model dunia yang dapat mensimulasikan berbagai lingkungan di beberapa skala spasial dan temporal. Gambar ini menyoroti empat karakteristik fundamental: responsivitas real-time, stokastisitas, perencanaan multi-skala, dan kepatuhan fisik intrinsik. Secara kolektif, ini mendukung tujuan jangka panjang generalisasi nol-shot.}
+      \label{fig:cap}
+    \end{figure}
+    
+    Dalam survei ini, kami mendefinisikan model dunia fisik sebagai mesin digital canggih yang mengkodekan pengetahuan dunia komprehensif untuk mensimulasikan dinamika dunia nyata sesuai dengan hukum fisik dan matematis intrinsik. Model-model tersebut berfungsi sebagai simulator fidelitas tinggi untuk memajukan domain seperti robotika, mengemudi otonom, dan permainan, serta sebagai uji coba terkontrol untuk melatih dan mengevaluasi agen cerdas dalam kondisi yang realistis namun aman. Dengan memodelkan dunia fisik, mereka juga dapat mendukung teknik berbasis fisika, pengambilan keputusan dengan risiko tinggi, dan tugas dunia nyata lainnya.
+
+
+    
+
+     Breakthrough terkini~\cite{assran2025vjepa2, mirage2025, klingai2024kling, sora, pika23, jimengai24jimeng, yang2024cogvideox, lin2025apt2, agarwal2025cosmos, alhaija2025cosmostransfer1, runway2025gen4, Veo325, chen2025skyreels, stepvideo25jieyue,gao2025seedance, bao2024vidu, luma24, yin2025causvid, hailuo0225minmax, teng2025magi, wan2025wan, kong2024hunyuanvideo, fan2025vchitect} dalam model generasi video, didorong oleh peningkatan dalam model difusi~\cite{hatamizadeh2024diffit, zhang2023improved, song2023lossguided, mardani2023variational, song2023pseudoinverse, lim2023score, tashiro2021csdi, song2020ddim, zhu2025asdm, zhong2025vfrtok}, tulang punggung autoregresif~\cite{meng2020autoregressive}, encoder variatif~\cite{zhao2019infovae, zhao2017learning}, teknik generasi gambar~\cite{dang2025personalized, zhang2023diffcollage, ye2023affordance, balaji2022ediff, meng2021improvedar, meng2021sdedit, luma24, zhao2017towards, liu2025rpe, shen2024sgadapter}, generasi gambar terkontrol ~\cite{atzmon2024edifyimagediff, sinha2021d2c}, dan peningkatan dalam efisiensi pelatihan atau inferensi~\cite{zhou2025inductive, song2025ideas, xu2024agg, ozturkler2023smrd, he2025scaling, wu2025vmoba,zhang2025Jenga, shi2025diffmoe, yang2025efficient, yin2025towards, han2024agent}, serta modul injeksi kondisi yang lebih fleksibel~\cite{zhang2025motioncrafter, zhang2023controlnet}, dan kemajuan dalam rendering video~\cite{liu2025improving}, menandai momen krusial untuk bidang ini. Model-model ini sekarang dapat menghasilkan video berkualitas tinggi yang berlandaskan pengetahuan dunia fundamental. Pada tahap ini, mereka mulai memainkan peran sentral dalam membangun model dunia. Lebih lanjut, dengan kemajuan teknologi seperti realitas virtual (VR) dan AI berbadan, integrasi model dunia ke dalam lingkungan interaktif real-time telah menjadi semakin layak. Tren teknologi ini, bersama dengan kedewasaan metode generasi video, menunjukkan bahwa kita berada di ambang era baru di mana model dunia akan memainkan peran sentral dalam membentuk sistem otonom, agen cerdas, dan lingkungan virtual yang imersif. Tren ini lebih lanjut dibuktikan dalam Gambar~\ref{fig: paper_amount}, yang menggambarkan dinamika perhatian penelitian selama bertahun-tahun terakhir. Secara spesifik, meskipun diskusi dan penyebutan model dunia telah ada sejak 2018, volume publikasi tahunan tetap relatif stabil. Mulai tahun 2024, generasi menyaksikan lonjakan eksplosif baik dalam kemajuan teknis maupun jumlah karya terkait, yang pada gilirannya memicu gelombang kemajuan baru dalam model dunia. Pola ini menyoroti ketergantungan yang jelas: kemajuan cepat dalam generasi video bukan hanya perkembangan paralel tetapi sedang menjadi enabler kunci yang mendukung dan mempercepat evolusi model dunia. Akibatnya, saat ini sangat krusial bagi komunitas untuk membahas secara sistematis evolusi dari generasi video ke model dunia, dan untuk merencanakan arah masa depan mereka sebagai batas penelitian terintegrasi.
+    %
+    
+    Meskipun kemajuan ini, tantangan tetap ada pada tingkat konseptual dan struktural. Secara konseptual, definisi "model dunia" tetap ambigu, membuat sulit menyatukan perspektif dan mengevaluasi kemajuan. Secara struktural, bidang ini kekurangan taksonomi yang terbukti baik untuk mengatur kemampuan pemodelan, tahap pengembangan, dan potensi lintasan. Celah-celah ini menyoroti kebutuhan mendesak untuk elucidasi sistematis dan survei komprehensif untuk mengonsolidasikan pengetahuan yang ada dan memandu tahap penelitian berikutnya. 
+    Survei saat ini~\cite{wang2025survey, xing2024survey, yu2025surveyigv, dal2024jointadsurvey, zhu2024issoraasurvey, fu2024exploringsurvey, melnik2024videosurvey, lin2025exploringsurvey, guan2024adinitialsurvey, liu2025generativesurvey, cho2024soraasansgisurvey, sun2024fromsorawecanseesurvey, yu2025position} telah menyiapkan dasar penting dengan meringkas metodologi terkait, dataset, dan aplikasi. Namun, masih ada kebutuhan untuk secara eksplisit mengklarifikasi aspek mana yang telah ditangani secara menyeluruh, dan area mana, seperti integrasi real-time, pipeline video-ke-dunia yang terkontrol, atau metrik evaluasi komprehensif, yang masih kurang dieksplorasi. Oleh karena itu, survei ini bertujuan untuk menggambarkan jalur yang jelas dari generasi video menuju pemodelan dunia komprehensif, memberikan panduan untuk penelitian dan pengembangan masa depan di bidang yang muncul ini.
+
+    \jiamingcom{Dalam makalah ini, kami memulai dengan definisi formal dan memberikan diskusi rinci yang berpusat di sekitar taksonomi model dunia.
+    Kami mendefinisikan model dunia fisik sebagai mesin simulasi digital yang tertanam dengan pengetahuan dunia komprehensif, mampu memprediksi adegan berikutnya yang dikondisikan oleh keadaan lingkungan dan prioritas kontekstual.
+    Setiap langkah prediksi dapat direpresentasikan sebagai triplet \textit{(Adegan Saat Ini, Mode Navigasi, Informasi Prior)}, yang secara kolektif menentukan evolusi lingkungan yang disimulasikan.
+    Model ini fokus pada menangkap dinamika kausal dan spatiotemporal dari lingkungan fisik, sementara input eksternal seperti mode navigasi atau tindakan bertindak sebagai rangsangan yang mengganggu atau memengaruhi evolusi lingkungan.
+    Oleh karena itu, model dunia dirumuskan sebagai sistem lingkungan interaktif yang merespons intervensi eksternal tanpa secara eksplisit memodelkan proses pengambilan keputusan yang menghasilkannya.
+    Berdasarkan definisi ini, kami menganalisis secara sistematis bagaimana model generasi video telah berevolusi menuju pemodelan dunia dan mengusulkan taksonomi empat generasi menurut kemampuan model, seperti yang diilustrasikan dalam Gambar~\ref{fig:cap}}.
+
+    % Dalam makalah ini, kami memulai dengan definisi dan memberikan diskusi rinci yang berpusat di sekitar taksonomi model dunia.
+    % Secara spesifik, dalam hal definisi, kami mendefinisikan model dunia sebagai mesin digital yang tertanam dengan pengetahuan dunia komprehensif, mampu memprediksi adegan berikutnya dalam kondisi lingkungan yang diberikan. Dalam rumusan kami, kami merujuk pada pemodelan dunia sebagai tugas prediksi adegan berikutnya dalam kondisi lingkungan. \js{kalimat duplikat seperti di atas} Setiap langkah prediksi direpresentasikan sebagai triplet
+    % \textit{(Adegan Saat Ini, Mode Navigasi, Informasi Prior)}, di mana lingkungan dan agen \js{sebenarnya sedikit bingung apakah pemodelan dunia adalah model agen atau lingkungan, saya pikir lingkungan tetapi teks di sini tampaknya menyarankan keduanya} dimodelkan sebagai entitas yang berevolusi bersama. Dalam hal taksonomi, kami menganalisis secara sistematis evolusi model generasi video menjadi model dunia dan mengusulkan taksonomi empat generasi berdasarkan kemampuan model, seperti yang ditunjukkan dalam Gambar~\ref{fig:cap}: 
+    \begin{itemize}
+    \item Generasi 1 - Kepercayaan: Simulasi Akurat Dunia Nyata; 
+    \item Generasi 2 - Interaktivitas: Kendali dan Dinamika Interaktif; 
+    \item Generasi 3 - Perencanaan: Pemodelan Evolusi Masa Depan Sistem Kompleks;
+    \item Generasi 4 - Stokastisitas: Pemodelan Peristiwa Outlier dan Probabilitas Rendah.
+    \end{itemize}
+    
+    Kami mengkategorikan dan menganalisis pendekatan yang ada berdasarkan kemampuan model fondasi, jenis mode navigasi, domain aplikasi, dan strategi kondisi. Perspektif ini membantu mengklarifikasi sinyal navigasi memengaruhi generasi video dan desain arsitektur apa yang paling efektif untuk tugas pemodelan dunia yang berbeda. Pembagian generasi yang jelas seperti ini memungkinkan evaluasi sistematis dari kemajuan dalam pemodelan dunia dan memfasilitasi diskusi tantangan dan celah yang tersisa antara sistem generasi video saat ini dan model dunia ideal.
+
+    \begin{figure}[!t]
+      \centering
+      \includegraphics[width=\linewidth]{figures/paper_count_c.pdf}
+      \caption{\textbf{Tinjauan Jumlah Makalah dan Artikel Tahunan di Bidang Generasi Video \& Model Dunia.} Jumlah artikel berasal dari pencarian yang dilakukan menggunakan kombinasi kata kunci tetap "generasi video" dan "model dunia" dari Google Scholar dan arXiv. }
+      \label{fig: paper_amount}
+    \end{figure}
+
+    \noindent
+    % \textbf{Kontribusi:}
+    Kami merangkum kontribusi kami sebagai berikut:
+    \begin{itemize}
+    \item Taksonomi global model dunia: Kami mengusulkan taksonomi empat generasi untuk mengkategorikan evolusi generasi video menuju model dunia, berdasarkan kemampuan inti model dunia, kepercayaan, interaktivitas, dan perencanaan.
+
+    \item Klarifikasi definisi model dunia:
+    Kami mendefinisikan tugas inti sebagai prediksi video adegan berikutnya, dan memberikan persamaan formal yang menggambarkan proses pemodelan dunia dalam hal input, keadaan internal, dan output.
+
+    \item Definisi formal mode navigasi: Kami mendefinisikan cakupan dan karakteristik mode navigasi, membedakannya dari kondisi spasial untuk mencegah tumpang tindih konseptual dan mengklarifikasi perbedaan mereka dalam fleksibilitas interaksi.
+    
+    \item Perspektif masa depan: Kami membahas kemampuan kunci yang harus dicapai agar model generasi video berevolusi menjadi model dunia yang lengkap, menawarkan wawasan untuk arah penelitian masa depan.
+    \end{itemize}
+
+\subsection{Position}
+\subsection{Posisi}
+    \label{sec:intro_position}
+
+
+    \xintaocom{Model dunia~\cite{lecun2022wm, ha2018worldmodel} secara tradisional dianggap sebagai alat yang memungkinkan agen AI untuk merasakan dan berinteraksi dengan lingkungan mereka, seringkali terinspirasi oleh kognisi manusia dan berlandaskan pada apa yang disebut "pengetahuan umum." Dalam survei ini, kita membedakan dua perspektif yang saling melengkapi, yaitu sumbu fisik yang menekankan dinamika eksternal dan sumbu mental yang menekankan simulasi internal dan pemodelan niat, mengikuti perbedaan konseptual yang diperkenalkan oleh Huang dalam posting blognya~\cite{huang2025towardsvwm}.}
+
+    Dari sudut pandang ini, model dunia fisik mewakili konseptualisasi yang lebih fundamental dan global, bertujuan untuk menangkap evolusi dan hukum intrinsik dunia fisik. Sebaliknya, model dunia mental~\cite{kessler2023effectiveness, xu2022learning, lu2022challenges, ball2021augmented} dapat dianggap sebagai kerangka kognitif internal yang spesialisasi yang mungkin muncul dalam model dunia fisik generasi tinggi, berfungsi untuk mewakili keadaan internal, niat, dan preferensi agen. 
+
+    \pengfeicom{Pembedaan yang jelas antara dua perspektif ini sangat penting, baik secara filosofis maupun dalam hal bentuk representasional dan persyaratan kemampuan. Secara filosofis, perbedaan ini mencerminkan debat klasik antara idealisme subjektif dan materialisme mekanistik. Model dunia fisik sejalan dengan yang terakhir, berusaha menjelaskan dunia melalui hukum fisik yang objektif dan tidak berubah, serta fokus pada dinamika eksternal yang independen dari pengalaman subjektif agen. Sebaliknya, model dunia mental mencerminkan sikap subjektif dan berorientasi pada niat, menekankan peran persepsi dan niat dalam membentuk pemahaman agen tentang dunia, konsisten dengan idealisme subjektif yang menyatakan bahwa peristiwa objektif mungkin dipengaruhi oleh kehendak atau tindakan agen. Sehubungan dengan permintaan kemampuan, model dunia fisik menekankan kepatuhan terhadap hukum fisik dunia nyata, interaksi yang berlandaskan pada pengetahuan intrinsik dunia, dan perencanaan esensial berdasarkan dinamika objektif. Model dunia mental, di sisi lain, harus memiliki kemampuan seperti pemahaman semantik, interaksi aktif, dan penalaran kontrafaktual, memungkinkannya berpikir dan bertindak lebih seperti manusia. Karena perbedaan fundamental ini, model dunia mental tidak dapat disamakan dengan model dunia fisik dalam definisi kami; sebaliknya, kita secara eksplisit membatasi cakupan dan kemampuan model dunia fisik.}
+
