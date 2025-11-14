@@ -1,0 +1,424 @@
+
+% Input & Output
+\definecolor{crText}{RGB}{243, 240, 161}    % Text
+\definecolor{crImage}{RGB}{247, 173, 190}   % Image
+\definecolor{crVideo}{RGB}{191, 155, 203}   % Video
+
+% Condition
+\definecolor{cr3D}{RGB}{139, 218, 225}   % 3D Prior
+\definecolor{crGeometry}{RGB}{255, 200, 196} % Sketch/human pose
+\definecolor{crPhysics}{RGB}{197, 225, 222} % Physical Law
+\definecolor{crMotionV}{RGB}{219, 210, 201}   % Semantic Map
+
+% Navigation Mode
+\definecolor{crNone}{RGB}{238, 237, 234}    % None Navigation
+\definecolor{crTraj}{RGB}{250, 234, 219}
+\definecolor{crCameraM}{RGB}{162, 180, 156}  % Camera Motion
+
+
+
+
+
+\definecolor{crAction}{RGB}{240, 212, 209}  % AD Action
+\definecolor{crGoal}{RGB}{202, 210, 219}  % Goal Point
+\definecolor{crVolume}{RGB}{160, 215, 209}  % Semantic Volume
+\definecolor{crDepth}{RGB}{112, 206, 234}   % Depth
+\definecolor{crLayout}{RGB}{240, 179, 210} % Layout
+\definecolor{crBBox}{RGB}{239, 208, 151}    % Object Bounding Box
+
+
+
+\begin{table*}[!t]
+    % \rowcolors{2}{gray!12}{gray!3}
+    \setlength\extrarowheight{1pt}
+    \centering
+    \caption{\pengfeicom{\textbf{Summary and Comparison of Works for Video Foundation Models.} * indicates models that include audio input or output. We compare models in terms of their backbone architectures, supported frame counts, and output resolutions. For models released in multiple duration or resolution versions, we report the highest available configuration by default.}}
+    \label{tab:Foundation}
+    {\fontsize{7pt}{11pt}\selectfont
+    \begin{tabularx}{\linewidth}{p{2.6cm}p{1.2cm}p{1cm}p{1.5cm}||p{2.8cm}p{1.2cm}p{1cm}p{1.5cm}}
+    % \toprule
+    \cmidrule{1-8}
+    
+       \bf{Method} 
+       & \bf{Backbone}   
+       & \bf{Frames}
+       & \bf{Resolution}
+       & \bf{Method} 
+       & \bf{Backbone}   
+       & \bf{Frames}
+       & \bf{Resolution}
+       % & \bf{Embodiment} 
+       % & \bf{Accessibility}
+    \\
+    \cmidrule{1-8} % PCG
+    \gray%
+        \multicolumn{8}{c}{Generation 1 World Model} \\
+    \cmidrule{1-8}
+        LTX-Video \cite{hacohen2024ltxvideo}
+        & DiT
+        & 121        
+        & $768 \times 512$
+        & STIV \cite{lin2024stiv}
+        & DiT
+        & 60
+        & $512 \times 512$
+        \\
+        JT-CV \cite{jvcvt2v}
+        & -
+        & 51         
+        & $1214 \times 2158$
+        & Hailuo 01 \cite{hailuo24minmax}
+        & -
+        & 144
+        & $1280 \times 720$
+        \\
+        OpenSora 1.3 \cite{zheng2024opensora}
+        & DiT
+        & 113        
+        & $1280 \times 720$
+        & Open-Sora Plan \cite{lin2024opensoraplan}
+        & DiT
+        & 121
+        & $1024 \times 576$
+        \\
+        EasyAnimate V5 \cite{xu2024easyanimate}
+        & DiT
+        & 49         
+        & $1024 \times 1024$
+        & King 1.0 \cite{klingai2024kling}
+        & DiT
+        & 300
+        & $1920 \times 1080$
+        \\
+        Lumiere~\cite{bar2024lumiere}
+        & UNet
+        & 80         
+        & $1024 \times 1024$
+        & VideoCrafter2 \cite{chen2024videocrafter2}
+        & UNet
+        & 16
+        & $512 \times 320$
+        \\
+        Latte \cite{ma2024latte}
+        & DiT
+        & 16      
+        & $512 \times 512$
+        & MagicVideo-V2 \cite{wang2024magicvideov2}
+        & UNet
+        & 94
+        & $1048 \times 1048$
+        \\
+        Mira \cite{ju2024miradata}
+        & DiT
+        & 2880         
+        & $384 \times 240$
+        & HiGen \cite{qing2024higen}
+        & UNet
+        & 32
+        & $448 \times 256$
+        \\
+        SVD \cite{blattmann2023svd}
+        & UNet
+        & 25     
+        & $1024 \times 576$
+        & I2VGen-XL \cite{zhang2023i2vgen}
+        & UNet
+        & -
+        & $1280 \times 720$
+        \\
+        SEINE \cite{chen2023seine}
+        & UNet
+        & 16       
+        & $560 \times 240$
+        &VideoCrafter1 \cite{chen2023videocrafter1}
+        & UNet
+        & 16
+        & $1024 \times 576$
+        \\
+        DynamiCrafter \cite{xing2024dynamicrafter}
+        & UNet
+        & 16         
+        & $1024 \times 576$
+        & MAGVIT-v2 \cite{yu2023magvitv2}
+        & ViT
+        & -
+        & $640 \times 360$
+        \\
+        Show-1 \cite{zhang2024show1}
+        & UNet
+        & 29     
+        & $576 \times 320$
+        & LaVie~\cite{wang2025lavie}
+        & UNet
+        & 16
+        & $512 \times 512$
+        \\
+        ModelScope~\cite{wang2023modelscope}
+        & UNet
+        & 16
+        & $256 \times 256$
+        &AnimateDiff v2~\cite{guo2023animatediff}
+        & UNet
+        & 16     
+        & $512 \times 512$
+        \\
+        Pika 1.5~\cite{pika23}
+        & - 
+        & 120
+        & $1280 \times 720$
+        &Gen-2~\cite{gen223}
+        & -
+        & 96         
+        & $1408 \times 768$
+        \\
+        MAGVIT~\cite{yu2023magvit}
+        & UNet
+        & 192         
+        & $128 \times 128$
+        & MagicVideo~\cite{zhou2022magicvideo}
+        & UNet
+        & -
+        & $1024 \times 1024$
+        \\
+        Imagen Video~\cite{Ho22imagenvideo}
+        & UNet
+        & 128         
+        & $1280 \times 768$
+        & Make-A-Video~\cite{singer2022makeavideo}
+        & UNet
+        & -
+        & $768 \times 768$
+        \\
+        CogVideo~\cite{hong2022cogvideo}
+        & DiT
+        & 32      
+        & $480 \times 480$
+        & RepVideo~\cite{si2025repvideo}
+        & -
+        & 16
+        & $512 \times 512$
+        \\
+
+        InstructVideo~\cite{yuan2024instructvideo}
+        & UNet
+        & 16    
+        & $256 \times 256$
+        & Emu Video~\cite{girdhar2023emuvideo}
+        & UNet
+        & 16
+        & $512 \times 512$
+        \\
+
+        Allegro~\cite{zhou2024allegro}
+        & DiT
+        & 88
+        & $1280 \times 720$
+        & DimensionX~\cite{sun2024dimensionx}
+        & AR
+        & 16    
+        & $256 \times 256$
+        \\
+        StreamingT2V~\cite{henschel2025streamingt2v}
+        & AR
+        & 1200
+        & $256 \times 256$
+        & VideoPoet~\cite{kondratyuk2023videopoet}
+        & AR
+        & 80    
+        & $512 \times 896$
+        \\
+        VideoTetris~\cite{tian2024videotetris}
+        & UNet
+        & 16 
+        & $512 \times 320$
+        & Owl-1~\cite{huang2024owl}
+        & UNet
+        & -
+        & -
+        \\
+        
+    \cmidrule{1-8} % PCG
+    \gray%
+        \multicolumn{8}{c}{Generation 2 World Model} \\
+    \cmidrule{1-8}
+    
+        Hailuo 02~\cite{hailuo0225minmax}
+        & -
+        & 240
+        & $1920 \times1080$
+        & Seedance 1.0~\cite{gao2025seedance}
+        & DiT
+        & 240
+        & $1920 \times1080$
+        \\
+        MAGI-1~\cite{teng2025magi}
+        & AR-DiT
+        & 96
+        & $720 \times 720$
+        & \pengfeicom{\jiamingcom{Veo 3*}~\cite{Veo325}}
+        & -
+        & 192
+        & $1280 \times 720$
+        \\
+        Nova Reel~\cite{nova25amazonaws}
+        & -
+        & 2880
+        & $1280 \times 720$
+        & Gen-4~\cite{runway2025gen4}
+        & -
+        & 240
+        & $1280 \times 720$
+        \\
+        Wan 2.1~\cite{wan2025wan}
+        & DiT
+        & 81
+        & $1280 \times 720$
+        & Step-Video-T2V~\cite{ma2025stepvideo}
+        & -
+        & 200
+        & $960 \times 540$
+        \\
+        Open-Sora 2.0~\cite{peng2025opensora2}
+        & DiT
+        & 120
+        & $1024 \times 576$
+        & SkyReels-V2~\cite{chen2025skyreels}
+        & DiT
+        & 121
+        & $1280 \times 720$
+        \\
+        MiracleVision~\cite{MiracleVision25meitu}
+        & -
+        & 120
+        & $720 \times 480$
+        & PixverseV4.5~\cite{pixverse2025}
+        & -
+        & 192
+        & $1920 \times 1080$
+        \\
+        Vchitect-2.0~\cite{fan2025vchitect}
+        & -
+        & 40
+        & $768 \times 432$
+        & Cosmos-Predict2~\cite{agarwal2025cosmos}
+        & DiT/AR
+        & 80
+        & $1280 \times 720$
+        \\
+         HunyuanVideo~\cite{kong2024hunyuanvideo}
+        & DiT
+        & 129
+        & $1280 \times 720$
+        & APT2~\cite{lin2025apt2}
+        & AR-DiT
+        & 1440        
+        & $1280 \times 720$
+        \\
+        Mochi-1~\cite{genmo2024mochi1}
+        & DiT
+        & 150
+        & $1969 \times 960$
+        &CogVideoX1.5~\cite{yang2024cogvideox}
+        & DiT
+        & 160
+        & $1360 \times 768$
+        \\
+        \pengfeicom{\jiamingcom{Gen-3*~\cite{runway2024gen3}}}
+        & -
+        & 240
+        & $1280 \times 720$
+        & Kling 2.1 Master~\cite{klingai2024kling}
+        & DiT
+        & 240
+        & $1920 \times 1080$
+        \\
+        EasyAnimateV5.1~\cite{xu2024easyanimate}
+        & DiT
+        & 49
+        & $1024 \times 1024$
+        & Jimeng~\cite{jimengai24jimeng}
+        & -
+        & 96
+        & $1280 \times 720$
+        \\
+        Vidu Q1~\cite{bao2024vidu}
+        & UNet
+        & 120
+        & $1920 \times 1080$
+        &Sora~\cite{sora}
+        & DiT
+        & 480
+        & $1920 \times 1080$
+        \\
+        Luma Ray2~\cite{luma24}
+        & -
+        & 240        
+        & $1920 \times 1080$
+        & 
+        \pengfeicom{\jiamingcom{Pika 2.2*}~\cite{pika23}}
+        & -
+        & 240
+        & $1920 \times 1080$
+        \\
+
+        CausVid~\cite{yin2025causvid}
+        & AR-DiT
+        & 121       
+        & $640 \times 352$
+        & Self Forcing~\cite{huang2025selfforcing}
+        & AR-DiT
+        & 81
+        & $854 \times 480$
+        \\
+        Movie Gen~\cite{polyak2024moviegen}
+        & DiT
+        & 250   
+        & $1920 \times 1080$
+        &\pengfeicom{\jiamingcom{Imagine v0.9*~\cite{imaginegrok}}}
+        & - 
+        & 80
+        & $464 \times 688$
+        \\
+        \pengfeicom{\jiamingcom{Wan 2.2*~\cite{wan22}}}
+        & DiT
+        & $120$
+        & $1280 \times 720$
+        &\pengfeicom{\jiamingcom{Sora 2*~\cite{openai2025sora2}}}
+        & DiT
+        & $1800$
+        & $1920 \times 1080$\\
+        \pengfeicom{\jiamingcom{Luma Ray3*~\cite{luma2025ray3}}}
+        & -
+        & $240$
+        & $3840 \times 2160$
+        &\pengfeicom{\jiamingcom{Vibes*~\cite{meta2025vibes}}}
+        & -
+        & $240$
+        & -
+        \\
+
+
+    \cmidrule{1-8} % PCG
+    \gray%
+        \multicolumn{8}{c}{Generation 3 World Model} \\
+    \cmidrule{1-8}
+
+    V-JEPA 2~\cite{assran2025vjepa2}
+    & AR
+    & -
+    & -
+    & MirageLSD~\cite{mirage2025}
+    & AR-DiT
+    & Infinite
+    & $512 \times 512$
+\\
+    Genie 3~\cite{google2025genie3}
+    & AR
+    & $>1440$
+    & $1280 \times 720$\\
+    \cmidrule{1-8}
+    \end{tabularx}
+    }
+
+
+\end{table*}

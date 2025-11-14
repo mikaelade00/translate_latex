@@ -1,0 +1,551 @@
+
+% Input & Output
+\definecolor{crText}{RGB}{243, 240, 161}    % Text
+\definecolor{crImage}{RGB}{247, 173, 190}   % Image
+\definecolor{crVideo}{RGB}{191, 155, 203}   % Video
+
+
+% Condition
+\definecolor{crBlur}{RGB}{240, 179, 210} % Layout
+\definecolor{crEdge}{RGB}{239, 208, 151}    % Object Bounding Box
+\definecolor{crDepth}{RGB}{162, 180, 156}  % Camera Pose
+\definecolor{crSegmentation}{RGB}{255, 200, 196} % Sketch/human pose
+\definecolor{crSketch}{RGB}{197, 225, 222} % Optical Flow
+
+
+% Navigation Mode
+\definecolor{crNone}{RGB}{238, 237, 234}    % None Navigation
+\definecolor{crAction}{RGB}{240, 212, 209}  % AD Action
+\definecolor{crGoal}{RGB}{202, 210, 219}  % Goal Point
+\definecolor{crCameraM}{RGB}{197, 225, 222} % Optical Flow
+
+
+
+\definecolor{crTraj}{RGB}{250, 234, 219}
+\definecolor{crVolume}{RGB}{160, 215, 209}  % Semantic Volume
+\definecolor{crSmMap}{RGB}{219, 210, 201}   % Semantic Map
+
+
+
+
+
+\begin{table*}[!t]
+    % \rowcolors{2}{gray!12}{gray!3}
+    \setlength\extrarowheight{1pt}
+    \centering
+    \caption{\textbf{Summary and comparison of works for video generation as world model in robotics, autonomous driving, and gaming}. In the table, BBox refers to Bounding Box.
+    }
+    \label{tab:app-methods}
+    {\fontsize{5pt}{7pt}\selectfont
+    \begin{tabularx}{\linewidth}{
+        p{0.2cm}p{3cm}p{3.5cm}p{3cm}p{2.3cm}X}
+    \toprule
+         
+       & \bf{Method}  
+       & \bf{Condition}
+       & \bf{Navigation Mode}
+       & \bf{Output Modality}    
+       & \bf{Foundation Model} \\
+    \midrule % PCG
+    \gray%
+    \multicolumn{6}{c}{Generation 1 World Model} \\
+    \midrule
+    \multirow{4}{*}{\rotatebox{90}{Robotics}}
+    & iVideoGPT~\cite{wu2024ivideogpt} 
+    % & NIPS'24                       
+    & None 
+    & Action
+    & Video, Action
+    & -  \\
+
+    & IRASim~\cite{zhu2024irasim}
+    & None 
+    & Trajectory
+    & Video
+    & Open-Sora~\cite{zheng2024opensora}  \\
+
+    & Seer~\cite{gu2023seer}
+    % & ICLR'24             
+    & None
+    & Instruction
+    & Video
+    & - \\
+    
+    & RoboDreamer~\cite{zhou2024robodreamer}
+    % & ICML'24            
+    & Sketch
+    & Instruction, Goal
+    & Video
+    & - \\
+
+
+    \midrule
+    \multirow{9}{*}{\rotatebox{90}{Autonomous Driving}}
+        & MagicDrive~\cite{gao2023magicdrive}
+        % & ICLR'24             
+        & Layout, BBox, Camera Position
+        & None 
+        & Video
+        & -\\
+        
+        & DriveScape~\cite{wu2024drivescape}
+        % & Arxiv'24             
+        & Layout, BBox
+        & None
+        & Video
+        & SVD~\cite{blattmann2023svd} \\
+        
+
+        & Delphi~\cite{ma2024delphi}
+        % & Arxiv'24             
+        & Layout
+        & None
+        & Video
+        & - \\
+        
+        & Panacea~\cite{wen2024panacea}
+        % & CVPR'24                              
+        & Layout
+        & None
+        & Video
+        & - \\
+
+        & MILE~\cite{hu2022mile}
+        % & NIPS'22             
+        & Layout
+        & Action
+        & Video, Action, Layout
+        & -\\
+
+        & Drive-WM~\cite{wang2024drivewm}
+        % & CVPR'24             
+        & BBox
+        & Action
+        & Video, Action
+        &-\\
+        
+        & DriveDreamer~\cite{wang2024drivedreamer}
+        % & ECCV'24             
+        & BBox, Geometry
+        & Action
+        & Video, Action
+        & - \\
+
+        & ADriver-I~\cite{jia2023adriveri}
+        % & Arxiv'23             
+        & None
+        & Instruction
+        & Video
+        & - \\
+
+        & GenAD~\cite{yang2024genad}
+        % & CVPR'24             
+        & None
+        & Instruction, Trajactory
+        & Video
+        & -\\
+    \midrule
+        \multirow{2}{*}{\rotatebox{90}{Gaming}}
+        & MarioVGG~\cite{green2020mariovgg} 
+        % & CoG'20     
+        & None  
+        & Controller
+        & Game Level
+        & AVDC~\cite{ko2023avdc} \\
+
+
+        & PVG~\cite{menapace2021pvg}
+        % & CVPR'21                     
+        & None
+        & Controller
+        & Video
+        & -\\
+
+        & Playable Environments~\cite{menapace2022playableenvironment}
+        & None
+        & Controller
+        & Video
+        & -\\
+
+        % & PGM~\cite{}
+        % & None
+        % & Controller
+        % & Video
+        % & -\\
+
+    \midrule
+    \gray%
+    \multicolumn{6}{c}{Generation 2 World Model} \\
+    \midrule
+
+    \multirow{19}{*}{\rotatebox{90}{Robotics}}
+        & Cosmos-Transfer1~\cite{alhaija2025cosmostransfer1} 
+        % & Arxiv'25 
+        & Blur, Edge, Depth, Segmentation
+        & None              
+        & Video
+        & Cosmos~\cite{agarwal2025cosmos} \\
+
+        & PAD~\cite{guo2024pad} 
+        % & NIPS'24                              
+        & None
+        & Action
+        & Video, Action
+        & - \\
+        
+        & WPE~\cite{quevedo2025wpe}
+        % & Arxiv'25  
+        & None
+        & Action
+        & Video
+        & - \\
+        
+
+        & UVA~\cite{li2025uva}
+        % & RSS'25             
+        & None
+        & Action
+        & Video, Action
+        & - \\
+        
+        & DWS~\cite{he2025dws}
+        % & Arxiv'25
+        & None
+        & Action
+        & Video 
+        & Open-Sora~\cite{zheng2024opensora}\\
+
+        
+        & 
+        & None
+        & Action
+        & Video
+        & iVdeoGPT~\cite{wu2024ivideogpt} \\
+        
+        & HMA~\cite{wang2025hma}
+        % & Arxiv'25       
+        & None
+        & Action
+        & Video, Action
+        & SVD~\cite{blattmann2023svd} \\
+        
+        & Genie Envisioner~\cite{liao2025genieEnvisioner}
+        % & Arxiv'25 
+        & None
+        & Action                  
+        & Video
+        & - \\
+        
+        & EVA~\cite{chi2024eva}
+        % & Arxiv'25             
+        & None
+        & Instruction
+        & Video
+        & DynamiCrafter~\cite{xing2024dynamicrafter} \\
+
+
+        & COMBO~\cite{zhang2024combo}
+        % & ICLR'25             
+        & None
+        & Instruction
+        & Video
+        & AVDC~\cite{ko2023avdc} \\
+
+
+        & VideoAgent~\cite{fan2024videoagent}
+        % & Arxiv'24             
+        & None
+        & Instruction
+        & Video, Action
+        & AVDC~\cite{ko2023avdc} \\
+
+        & VidMan~\cite{wen2024vidman}
+        % & NIPS'24             
+        & None
+        & Instruction
+        & Video, Action
+        & Open-Sora~\cite{zheng2024opensora} \\
+        
+        & UniPi~\cite{du2023unipi}
+        % & NIPS'24             
+        & None
+        & Instruction
+        & Video
+        & Cliport~\cite{shridhar2022cliport}\\
+
+        & VPDD~\cite{he2024vpdd}
+        % & NIPS'24             
+        & None
+        & Instruction
+        & Video
+        & -\\
+
+        & AVDC~\cite{ko2023avdc}
+        % & Arxiv'23             
+        & Depth
+        & Goal
+        & Video, Action
+        & - \\
+
+        & Luo et.al~\cite{luo2024videotoaction}
+        % & ICLR'25             
+        & None
+        & Goal
+        & Video
+        & AVDC~\cite{ko2023avdc} \\
+
+        & GR-1~\cite{wu2023gr1}
+        % & ICLR'24             
+        & None
+        & Action, Instruction
+        & Video, Action
+        & -  \\
+
+        & RoboMaster~\cite{fu2025robomaster}
+        % & Arxiv'25 
+        & None
+        & Action, Instruction          
+        & Video
+        & CogVideoX~\cite{yang2024cogvideox} \\
+
+        
+
+        & UniSim~\cite{yang2023unisim}
+        % & ICLR'24             
+        & None
+        & Action, Instruction, Camera
+        & Video
+        & -\\
+
+        & NavigeteDiff~\cite{qin2025navigatediff}
+        % & ICRA'25             
+        & None
+        & Instruction, Goal
+        & Video, Text
+        & - \\
+    \midrule
+
+        \multirow{16}{*}{\rotatebox{90}{Autonomous Driving}}
+        & Cosmos-Drive-Dreams~\cite{wu2024drivescape}
+        % & Arxiv'25             
+        & Layout
+        & None
+        & Video
+        & Cosmos~\cite{agarwal2025cosmos} \\
+        
+        & UniScene~\cite{li2025uniscene}
+        % & CVPR'25 
+        & Layout
+        & None                
+        & Video, LiDAR 
+        & SVD~\cite{blattmann2023svd} \\
+
+        & DreamForge~\cite{mei2024dreamforge}
+        % & Arxiv'24
+        & Layout, BBox, Camera Position
+        & None  
+        & Video
+        & - \\
+        
+        & DiVE~\cite{jiang2024dive}
+        % & Arxiv'24       
+        & Layout, Geometry
+        & None
+        & Video 
+        & Open-Sora~\cite{zheng2024opensora} \\
+
+        & DrivingDiffusion\cite{li2024drivingdiffusion} 
+        % & ECCV'24                              
+        & Layout, Optical
+        & None
+        & Video
+        & - \\
+
+        & DrivingGPT~\cite{chen2024drivinggpt}
+        % & Arxiv'24             
+        & None
+        & Action
+        & Video
+        & -  \\
+
+        
+        & InfinityDrive~\cite{guo2024infinitydrive}
+        % & Arxiv'24             
+        & None
+        & Action
+        & Video
+        & - \\
+    
+        & GAIA-1~\cite{hu2023gaia1}
+        % & Arxiv'23             
+        & None
+        & Action
+        & Video
+        & - \\
+        
+
+        
+        & Epona~\cite{zhang2025epona}
+        % & ICCV'25             
+        & None
+        & Trajectory 
+        & Video, Trajectory 
+        & - \\
+        
+        & GEM~\cite{hassan2025gem}
+        % & CVPR'25             
+        & Geometry
+        & Trajectory
+        & Video
+        & SVD~\cite{blattmann2023svd} \\
+
+        
+        & DrivingWorld~\cite{hu2024drivingworld}
+        % & Arxiv'24             
+        & None
+        & Trajectory
+        & Video
+        & - \\
+        
+        & MagicDrive-V2~\cite{gao2024magicdrivedit}
+        % & Arxiv'24             
+        & Layout, BBox, Camera Position
+        & Trajectory
+        & Video
+        & CogVideoX~\cite{yang2024cogvideox} \\
+
+        & DriveDreamer-2~\cite{zhao2025drivedreamer2}
+        % & AAAI'25             
+        & None
+        & Instruction
+        & Video
+        & SVD~\cite{blattmann2023svd} \\
+    
+
+        & GAIA-2~\cite{russell2025gaia2}
+        % & Arxiv'25             
+        & Layout, Geometry
+        & Action, Instruction
+        & Video
+        & - \\
+       
+        & MaskGWM~\cite{ni2025maskgwm}
+        % & CVPR'25             
+        & None
+        & Action, Trajectory, Instruction, Goal
+        & Video
+        & - \\
+        
+        & Vista~\cite{gao2024vista}
+        % & NIPS'24             
+        & None
+        & Action, Trajectory, Instruction, Goal
+        & Video
+        & SVD~\cite{blattmann2023svd} \\
+
+    \midrule
+    \multirow{14}{*}{\rotatebox{90}{Gaming}}
+        & Hunyuan-GameCraft~\cite{li2025hunyuangamecraft}
+        % & Arxiv'25 
+        & None
+        & Controller
+        & Video
+        & PlayGen~\cite{yang2024playgen} \\
+
+        
+        & MaaG~\cite{chen2025maag}
+        % & Arxiv'25 
+        & None
+        & Controller
+        & Game Level
+        & PlayGen~\cite{yang2024playgen} \\
+
+
+        & GameNGen~\cite{valevski2024gamengen} 
+        % & ICLR'25                              
+        & None
+        & Controller
+        & Video
+        & - \\
+        
+        & W.H.A.M.~\cite{kanervisto2025wham}
+        % & Nature'25             
+        & None
+        & Controller
+        & Video
+        & - \\
+        
+        & Genie~\cite{bruce2024genie}
+        % & ICML'24
+        & Sketch
+        & Controller
+        & Video
+        & - \\
+
+        & PlayGen~\cite{yang2024playgen}
+        % & Arxiv'24
+        & None
+        & Controller
+        & Video
+        & - \\
+
+        & GameGen-X~\cite{che2024gamegenx} 
+        % & ICLR'25                              
+        & None
+        & Keyboard
+        & Video
+        & -\\
+
+        & The Matrix~\cite{matrix} 
+        % & Arxiv'24                              
+        & None
+        & Keyboard
+        & Video
+        & - \\
+
+        & MineWorld~\cite{guo2025mineworld} 
+        % & Arxiv'25                              
+        & None
+        & Keyboard, Mouse
+        & Video
+        & - \\
+
+        & GameFactory~\cite{yu2025gamefactory}
+        % & Arxiv'25                              
+        & None
+        & Keyboard, Mouse
+        & Video
+        & - \\
+
+        & WORLDMEM~\cite{xiao2025worldmem}
+        % & Arxiv'25                       
+        & None
+        & Keyboard, Mouse, Camera 
+        & Video
+        & - \\
+        
+        & DIAMOND~\cite{alonso2024diamond}
+        % & NIPS'24                              
+        & None
+        & Keyboard, Mouse
+        & Video, Action
+        & EDM~\cite{edm22} \\
+
+        
+        & Genie-2~\cite{parker2024genie2}                         
+        & None 
+        & Keyboard, Mouse
+        & Video
+        & - \\
+
+        & Oasis~\cite{decart2024oasis}                     
+        & None
+        & Keyboard, Mouse
+        & Video
+        & - \\
+
+
+    \bottomrule
+    \end{tabularx}
+    }
+\end{table*}

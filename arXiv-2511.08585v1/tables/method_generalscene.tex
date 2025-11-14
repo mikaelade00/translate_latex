@@ -1,0 +1,437 @@
+
+% Input & Output
+\definecolor{crText}{RGB}{243, 240, 161}    % Text
+\definecolor{crImage}{RGB}{247, 173, 190}   % Image
+\definecolor{crVideo}{RGB}{191, 155, 203}   % Video
+
+% Condition
+\definecolor{cr3D}{RGB}{139, 218, 225}   % 3D Prior
+\definecolor{crGeometry}{RGB}{255, 200, 196} % Sketch/human pose
+\definecolor{crPhysics}{RGB}{197, 225, 222} % Physical Law
+\definecolor{crMotionV}{RGB}{219, 210, 201}   % Semantic Map
+
+% Navigation Mode
+\definecolor{crNone}{RGB}{238, 237, 234}    % None Navigation
+\definecolor{crTraj}{RGB}{250, 234, 219}
+\definecolor{crCameraM}{RGB}{162, 180, 156}  % Camera Motion
+
+
+
+
+
+\definecolor{crAction}{RGB}{240, 212, 209}  % AD Action
+\definecolor{crGoal}{RGB}{202, 210, 219}  % Goal Point
+\definecolor{crVolume}{RGB}{160, 215, 209}  % Semantic Volume
+\definecolor{crDepth}{RGB}{112, 206, 234}   % Depth
+\definecolor{crLayout}{RGB}{240, 179, 210} % Layout
+\definecolor{crBBox}{RGB}{239, 208, 151}    % Object Bounding Box
+
+
+
+\begin{table*}[!t]
+    % \rowcolors{2}{gray!12}{gray!3}
+    \setlength\extrarowheight{1pt}
+    \centering
+    \caption{\textbf{Summary and Comparison of Works for Video Generation as World Model in General Scene}. 
+    }
+    \label{tab:General-methods}
+    {\fontsize{5pt}{7pt}\selectfont
+    \begin{tabularx}{\linewidth}{p{2.8cm}p{1.5cm}p{2cm}p{2cm}p{4cm}X}
+    \toprule
+       \bf{Method} 
+       & \bf{Condition}
+       & \bf{Navigation}
+       & \bf{Output}   
+       & \bf{Task} 
+       & \bf{Foundation Model} \\
+    \midrule % PCG
+    \gray%
+    \multicolumn{6}{c}{Generation 1 World Model} \\
+    \midrule
+        
+        Moonshot~\cite{zhang2024moonshot} 
+        & Geometry
+        & None          
+        & Video
+        & Generation, Editing
+        & -\\
+        
+        SparseCtrl~\cite{guo2024sparsectrl} 
+        & Geometry
+        & None    
+        & Video
+        & Gen. Ani.
+        &  AnimateDiff~\cite{guo2023animatediff}  \\
+
+        ConditionVideo~\cite{peng2024conditionvideo} 
+        & Geometry
+        & None           
+        & Video
+        & Generation 
+        & -  \\
+        
+        ControlVideo~\cite{zhang2023controlvideo}
+        & Geometry
+        & None       
+        & Video
+        & Generation
+        & -  \\
+
+        
+        VideoComposer~\cite{wang2023videocomposer}
+        & Geometry
+        & Trajectory 
+        & Video
+        & Generation, Inpainting
+        & - \\
+        
+        
+        Text2Video-Zero~\cite{khachatryan2023text2video}
+        & Geometry
+        & None 
+        & Video
+        & Generation, Inpainting
+        & -  \\
+        
+        
+        Diffusion4D ~\cite{liang2024diffusion4d}
+        & 3D
+        & None       
+        & Video, 3D
+        & Generation, Construction
+        & ModelScope~\cite{wang2023modelscope} \\
+        
+        
+        & 3D
+        & None   
+        & Video, 3D
+        & Generation, Construction
+        & I2VGen-XL~\cite{zhang2023i2vgen}  \\
+        
+        SV3D~\cite{voleti2024sv3d}
+        & 3D
+        & None   
+        & Video, 3D
+        & Generation
+        & SVD~\cite{blattmann2023svd}  \\
+        
+        V3D~\cite{chen2024v3d} 
+        & 3D
+        & None   
+        & Video, 3D
+        & Generation, Construction
+        & SVD~\cite{blattmann2023svd}  \\
+
+        
+        VideoMV~\cite{zuo2024videomv}
+        & 3D
+        & None
+        & Video, 3D
+        & Generation, Construction
+        & ModelScope\cite{wang2023modelscope} \\
+
+        & 3D
+        & None
+        & Video, 3D
+        & Generation, Construction
+        & I2VGen-XL\cite{zhang2023i2vgen}  \\
+        
+
+        PhysGen~\cite{liu2024physgen} 
+        & Physics
+        & None
+        & Video
+        & Generation
+        & SEINE~\cite{chen2023seine}  \\
+
+
+        
+        Go-with-the-Flow~\cite{burgert2025gowiththeflow}
+        & 3D
+        & Trajectory       
+        & Video
+        & Motion Control, Camera Control
+        & CogVideoX~\cite{yang2024cogvideox}  \\
+
+
+        Motion Prompting~\cite{geng2025motionprompting}
+        & None
+        & Trajectory       
+        & Video
+        & Motion Control, Camera Control
+        & Lumiere~\cite{bar2024lumiere}  \\
+
+        SG-I2V~\cite{namekata2024sgi2v}
+        & None
+        & Trajectory    
+        & Video
+        & Motion Control, Camera Control
+        & SVD~\cite{blattmann2023svd}  \\
+
+
+        Image Conductor~\cite{li2025imageconductor}
+        & None
+        & Trajectory      
+        & Video
+        & Motion Control, Camera Control
+        & Animatediff~\cite{guo2023animatediff} \\
+        
+        TrailBlazer~\cite{ma2024trailblazer} 
+        & None
+        & Trajectory      
+        & Video
+        & Motion Control 
+        & ModelScope~\cite{wang2023modelscope}  \\
+
+        MotionCtrl~\cite{wang2024motionctrl} 
+        & None
+        & Trajectory       
+        & Video
+        & Motion Control, Camera Control
+        & VideoCrafter1~\cite{chen2023videocrafter1}  \\
+
+        DragAnything~\cite{wu2024draganything} 
+        & Geometry
+        & Trajectory       
+        & Video
+        & Motion Control, Camera Control
+        & SVD~\cite{blattmann2023svd}  \\
+        
+        PEEKABOO~\cite{jain2024peekaboo}
+        & None
+        & Trajectory     
+        & Video
+        & Motion Control 
+        & ModelScope~\cite{wang2023modelscope}  \\
+
+        FreeTraj~\cite{qiu2024freetraj} 
+        & None
+        & Trajectory        
+        & Video
+        & Motion Control 
+        & VideoCrafter1~\cite{chen2023videocrafter1}  \\
+
+        
+
+        Direct-A-Video~\cite{yang2024directavideo}
+        & None
+        & Trajectory        
+        & Video
+        & Motion Control, Camera Control. 
+        & ModelScope~\cite{wang2023modelscope}  \\
+       
+        FullDiT~\cite{ju2025fulldit} 
+        & Geometry
+        & Camera Motion    
+        & Video
+        & Generation
+        & Private  \\
+        
+        ReCamMaster~\cite{bai2025recammaster} 
+        & None
+        & Camera Motion      
+        & Video
+        & Camera Control
+        & -  \\
+
+
+        CineMaster~\cite{wang2025cinemaster} 
+        & 3D
+        & Camera Motion
+        & Video
+        & Cameral Control
+        & -  \\
+
+
+
+        AC3D~\cite{bahmani2025ac3d}
+        & None
+        & Camera Motion 
+        & Video
+        & Camera Control
+        & - \\
+
+        VD3D~\cite{bahmani2024vd3d}
+        & None
+        & Camera Motion
+        & Video
+        & Camera Control
+        & -  \\
+
+        CameraCtrl~\cite{he2024cameractrl} 
+        & None
+        & Camera Motion 
+        & Video
+        & Camera Control
+        & SVD~\cite{blattmann2023svd} \\
+
+
+        & None
+        & Camera Motion       
+        & Video
+        & Camera Control
+        & AnimateDiff~\cite{guo2023animatediff}  \\
+
+        GCD~\cite{van2024gcd} 
+        & None
+        & Camera Motion      
+        & Video
+        & Generation
+        & SVD~\cite{blattmann2023svd}  \\
+
+        CVD~\cite{kuang2024cvd}
+        & None
+        & Camera Motion   
+        & Video
+        & Camera Control
+        & AnimateDiff~\cite{guo2023animatediff}  \\
+
+        CamCo~\cite{xu2024camco}
+        & None
+        & Camera Motion     
+        & Video
+        & Camera Control
+        & SVD~\cite{blattmann2023svd}  \\
+
+
+    \midrule
+    \gray%
+    \multicolumn{6}{c}{Generation 2 World Model} \\
+    \midrule
+
+
+    SketchVideo~\cite{sketchvideo}
+        & Geometry 
+        & None           
+        & Video
+        & Generation, Editing
+        & CogVideoX~\cite{yang2024cogvideox} \\
+
+
+    DaS~\cite{das}
+        & 3D
+        & None    
+        & Video
+        & Motion Control, Camera Control, Motion Transfer, Animating
+        & CogVideoX~\cite{yang2024cogvideox}  \\
+        
+    GS-DiT~\cite{bian2025gsdit} 
+        & 3D
+        & None     
+        & Video
+        & Generation
+        & CogVideoX~\cite{yang2024cogvideox}  \\
+    PISA~\cite{li2025pisa}
+        & Physics
+        & None   
+        & Video
+        & Generation
+        & Open-Sora~\cite{zheng2024opensora} \\
+
+    PhyT2V~\cite{xue2025phyt2v} 
+        & Physics
+        & None   
+        & Video
+        & Gen.
+        & CogVideoX~\cite{yang2024cogvideox}  \\
+
+    Zhao et al.~\cite{zhao2025synthetic}
+        & Physics
+        & None    
+        & Video
+        & Generation
+        & MMDiT~\cite{esser2024mmdit}  \\
+
+    WISA~\cite{wang2025wisa}  
+        & Physics
+        & None    
+        & Video
+        & Generation
+        & CogVideoX~\cite{yang2024cogvideox}  \\
+
+    CamCloneMaster~\cite{luo2025camclonemaster}
+     & None
+     & Camera Motion 
+     & Video
+     & Generation
+     & Private
+    \\
+    Context as Memory~\cite{yu2025contextasmemory}
+     & None
+     & Camera Motion
+     & Video
+     & Generation
+     & Private
+    \\
+    3DTrajMaster~\cite{fu20243dtrajmaster}
+        & None
+        & Trajectory, Camera Motion     
+        & Video
+        & Motion Control, Camera Control
+        & Private \\
+
+
+    CameraCtrl II~\cite{he2025cameractrl2} 
+        & None
+        & Camera Motion      
+        & Video
+        & Camera Control
+        & - \\
+    
+    GEN3C~\cite{ren2025gen3c}
+        & 3D
+        & Camera Motion
+        & Video
+        & Camera Control
+        &  SVD~\cite{blattmann2023svd}
+        \\
+    CamTrol~\cite{hou2024camtrol} 
+        & 3D
+        & Camera Motion       
+        & Video
+        & Camera Control
+        & SVD~\cite{blattmann2023svd}  \\
+
+    
+    AETHER~\cite{aether}
+        & None
+        & Action    
+        & Video, 3D, Action
+        & Generation
+        & CogVideo~\cite{hong2022cogvideo}\\
+
+    SlowFast-VGen~\cite{hong2024slowfast}
+        & None
+        & Instruction      
+        & Video
+        & Generation
+        & ModelScope~\cite{wang2023modelscope}  \\
+        
+     Pandora~\cite{xiang2024pandora}
+        & None
+        & Instruction      
+        & Video
+        & Generation
+        & DynamiCrafter~\cite{xing2024dynamicrafter}  \\
+    \midrule
+    \gray%
+    \multicolumn{6}{c}{Generation 3 World Model} \\
+    \midrule
+
+    NWM~\cite{nwm}
+        & None
+        & Action     
+        & Video
+        & Generation, Planning
+        & - \\
+
+    V-JEPA 2-AC~\cite{assran2025vjepa2}
+        & None
+        & Action    
+        & Video
+        & Generation, Planning
+        & V-JEPA 2~\cite{assran2025vjepa2} \\
+    \bottomrule
+    \end{tabularx}
+    }
+\end{table*}
