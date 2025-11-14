@@ -50,5 +50,5 @@ def process_latex_to_json(file_path: str, output_path: str = "chunks.json",
 if __name__ == "__main__":
     # Ganti path file sesuai kebutuhan
     path = "arXiv-2511.08585v1/main.tex"
-    process_latex_to_json(path, output_path="paper_chunks.json",
+    process_latex_to_json(path, output_path="output/paper_chunks.json",
                           chunk_size=1000, overlap=100)

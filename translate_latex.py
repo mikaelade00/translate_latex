@@ -1,8 +1,12 @@
 import json
+import os
 from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
 
 client = OpenAI(
-    api_key="2a246e6202904b0a936cb6c06a1451b3.GeQLbprjUGiWApDr",
+    api_key=os.getenv("API_KEY"),
     base_url="https://api.z.ai/api/paas/v4/"
 )
 
@@ -59,6 +63,6 @@ def translate_chunks(input_file="latex_chunks.json",
 
 
 if __name__ == "__main__":
-    input_path = "latex_chunks_persection.json"
-    output_path = "latex_chunks_translated.json"
+    input_path = "output/latex_chunks_persection.json"
+    output_path = "output/latex_chunks_translated.json"
     translate_chunks(input_file=input_path, output_file=output_path)

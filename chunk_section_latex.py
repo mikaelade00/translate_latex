@@ -60,4 +60,4 @@ def process_latex_to_json(file_path: str, output_path="latex_chunks.json"):
 
 if __name__ == "__main__":
     path = "arXiv-2511.08585v1/main.tex"
-    process_latex_to_json(path, output_path="latex_chunks_persection.json")
+    process_latex_to_json(path, output_path="output/latex_chunks_persection.json")

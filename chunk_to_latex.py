@@ -36,7 +36,7 @@ if __name__ == "__main__":
     reconstructed = reconstruct_latex(translated_chunks)
 
     # Save output .tex
-    output_path = "reconstructed_output.tex"
+    output_path = "output/reconstructed_output.tex"
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(reconstructed)
 
